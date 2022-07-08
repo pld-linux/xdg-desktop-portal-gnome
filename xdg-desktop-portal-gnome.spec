@@ -1,12 +1,12 @@
 Summary:	GNOME Desktop Portal
 Summary(pl.UTF-8):	Implementacja XDG Desktop Portal dla GNOME
 Name:		xdg-desktop-portal-gnome
-Version:	42.1
+Version:	42.3
 Release:	1
 License:	LGPL v2+
 Group:		X11/Applications
 Source0:	https://download.gnome.org/sources/xdg-desktop-portal-gnome/42/%{name}-%{version}.tar.xz
-# Source0-md5:	f8d1b104cdda8ea440304e6fe5dc468e
+# Source0-md5:	c76a08c8c024f99bdd39fbb1ddeca60b
 URL:		https://gitlab.gnome.org/GNOME/xdg-desktop-portal-gnome
 BuildRequires:	fontconfig-devel
 BuildRequires:	glib2-devel >= 1:2.44
