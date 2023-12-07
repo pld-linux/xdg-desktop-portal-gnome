@@ -1,32 +1,33 @@
 Summary:	GNOME Desktop Portal
 Summary(pl.UTF-8):	Implementacja XDG Desktop Portal dla GNOME
 Name:		xdg-desktop-portal-gnome
-Version:	44.2
+Version:	45.1
 Release:	1
 License:	LGPL v2+
 Group:		X11/Applications
-Source0:	https://download.gnome.org/sources/xdg-desktop-portal-gnome/44/%{name}-%{version}.tar.xz
-# Source0-md5:	d80659975dfc97eddbea1c0f82d54948
+Source0:	https://download.gnome.org/sources/xdg-desktop-portal-gnome/45/%{name}-%{version}.tar.xz
+# Source0-md5:	390b42a8a671ee20e280d69b1e2ae1c6
 URL:		https://gitlab.gnome.org/GNOME/xdg-desktop-portal-gnome
 BuildRequires:	fontconfig-devel
 BuildRequires:	glib2-devel >= 1:2.62
 BuildRequires:	gnome-desktop4-devel >= 4
 BuildRequires:	gsettings-desktop-schemas-devel
 BuildRequires:	gtk4-devel >= 4.0
-BuildRequires:	libadwaita-devel
+BuildRequires:	libadwaita-devel >= 1.2.0
 BuildRequires:	meson >= 0.57.0
 BuildRequires:	ninja >= 1.5
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(macros) >= 1.736
 BuildRequires:	tar >= 1:1.22
-BuildRequires:	xdg-desktop-portal-devel >= 1.15.0
+BuildRequires:	xdg-desktop-portal-devel >= 1.17.0
 BuildRequires:	xorg-lib-libX11-devel
 BuildRequires:	xz
 Requires:	glib2 >= 1:2.62
 Requires:	gsettings-desktop-schemas
 Requires:	gtk4 >= 4.0
+Requires:	libadwaita >= 1.2.0
 Requires:	systemd-units >= 1:242
-Requires:	xdg-desktop-portal >= 1.15.0
+Requires:	xdg-desktop-portal >= 1.17.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
