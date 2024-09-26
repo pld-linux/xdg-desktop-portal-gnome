@@ -9,6 +9,7 @@ Source0:	https://download.gnome.org/sources/xdg-desktop-portal-gnome/47/%{name}-
 # Source0-md5:	1e8766f8fa2b1039c53e3e97dfd506be
 URL:		https://gitlab.gnome.org/GNOME/xdg-desktop-portal-gnome
 BuildRequires:	fontconfig-devel
+BuildRequires:	gettext-tools
 BuildRequires:	glib2-devel >= 1:2.62
 BuildRequires:	gnome-desktop4-devel >= 4
 BuildRequires:	gsettings-desktop-schemas-devel >= 47
