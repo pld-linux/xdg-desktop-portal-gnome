@@ -1,12 +1,12 @@
 Summary:	GNOME Desktop Portal
 Summary(pl.UTF-8):	Implementacja XDG Desktop Portal dla GNOME
 Name:		xdg-desktop-portal-gnome
-Version:	47.1
+Version:	47.3
 Release:	1
 License:	LGPL v2+
 Group:		X11/Applications
 Source0:	https://download.gnome.org/sources/xdg-desktop-portal-gnome/47/%{name}-%{version}.tar.xz
-# Source0-md5:	1e8766f8fa2b1039c53e3e97dfd506be
+# Source0-md5:	4f3716cb0bd551dc0791b0ff9b41e7ec
 URL:		https://gitlab.gnome.org/GNOME/xdg-desktop-portal-gnome
 BuildRequires:	fontconfig-devel
 BuildRequires:	gettext-tools
@@ -18,7 +18,7 @@ BuildRequires:	libadwaita-devel >= 1.6.0
 BuildRequires:	meson >= 0.59.0
 BuildRequires:	ninja >= 1.5
 BuildRequires:	pkgconfig
-BuildRequires:	rpmbuild(macros) >= 1.736
+BuildRequires:	rpmbuild(macros) >= 2.042
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xdg-desktop-portal-devel >= 1.17.0
 BuildRequires:	xorg-lib-libX11-devel
@@ -45,15 +45,15 @@ GNOME Settings Daemon, aby zapewnić różne funkcje portalu.
 %setup -q
 
 %build
-%meson build \
+%meson \
 	-Dsystemduserunitdir=%{systemduserunitdir}
 
-%ninja_build -C build
+%meson_build
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%ninja_install -C build
+%meson_install
 
 # not supported by glibc (as of 2.37)
 %{__rm} -r $RPM_BUILD_ROOT%{_localedir}/ie
