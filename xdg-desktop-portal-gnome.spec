@@ -2,7 +2,7 @@ Summary:	GNOME Desktop Portal
 Summary(pl.UTF-8):	Implementacja XDG Desktop Portal dla GNOME
 Name:		xdg-desktop-portal-gnome
 Version:	47.3
-Release:	1
+Release:	2
 License:	LGPL v2+
 Group:		X11/Applications
 Source0:	https://download.gnome.org/sources/xdg-desktop-portal-gnome/47/%{name}-%{version}.tar.xz
@@ -76,5 +76,5 @@ rm -rf $RPM_BUILD_ROOT
 %{systemduserunitdir}/xdg-desktop-portal-gnome.service
 %{_datadir}/dbus-1/services/org.freedesktop.impl.portal.desktop.gnome.service
 %{_datadir}/glib-2.0/schemas/xdg-desktop-portal-gnome.gschema.xml
-%{_datadir}/xdg-desktop-portal
+%{_datadir}/xdg-desktop-portal/portals/gnome.portal
 %{_desktopdir}/xdg-desktop-portal-gnome.desktop
