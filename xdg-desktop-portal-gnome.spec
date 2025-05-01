@@ -1,34 +1,36 @@
 Summary:	GNOME Desktop Portal
 Summary(pl.UTF-8):	Implementacja XDG Desktop Portal dla GNOME
 Name:		xdg-desktop-portal-gnome
-Version:	47.3
-Release:	2
+Version:	48.0
+Release:	1
 License:	LGPL v2+
 Group:		X11/Applications
-Source0:	https://download.gnome.org/sources/xdg-desktop-portal-gnome/47/%{name}-%{version}.tar.xz
-# Source0-md5:	4f3716cb0bd551dc0791b0ff9b41e7ec
+Source0:	https://download.gnome.org/sources/xdg-desktop-portal-gnome/48/%{name}-%{version}.tar.xz
+# Source0-md5:	807c85deafe87d31be76a8b66cea53d0
 URL:		https://gitlab.gnome.org/GNOME/xdg-desktop-portal-gnome
 BuildRequires:	fontconfig-devel
 BuildRequires:	gettext-tools
 BuildRequires:	glib2-devel >= 1:2.62
 BuildRequires:	gnome-desktop4-devel >= 4
 BuildRequires:	gsettings-desktop-schemas-devel >= 47
-BuildRequires:	gtk4-devel >= 4.0
-BuildRequires:	libadwaita-devel >= 1.6.0
-BuildRequires:	meson >= 0.59.0
+BuildRequires:	gtk4-devel >= 4.17.1
+BuildRequires:	libadwaita-devel >= 1.7
+BuildRequires:	meson >= 1.1
 BuildRequires:	ninja >= 1.5
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(macros) >= 2.042
+BuildRequires:	systemd-devel >= 1:242
 BuildRequires:	tar >= 1:1.22
-BuildRequires:	xdg-desktop-portal-devel >= 1.17.0
+BuildRequires:	wayland-devel
+BuildRequires:	xdg-desktop-portal-devel >= 1.19.1
 BuildRequires:	xorg-lib-libX11-devel
 BuildRequires:	xz
 Requires:	glib2 >= 1:2.62
 Requires:	gsettings-desktop-schemas >= 47
-Requires:	gtk4 >= 4.0
-Requires:	libadwaita >= 1.6.0
+Requires:	gtk4 >= 4.17.1
+Requires:	libadwaita >= 1.7
 Requires:	systemd-units >= 1:242
-Requires:	xdg-desktop-portal >= 1.17.0
+Requires:	xdg-desktop-portal >= 1.19.1
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -46,6 +48,7 @@ GNOME Settings Daemon, aby zapewnić różne funkcje portalu.
 
 %build
 %meson \
+	-Dsystemd=enabled \
 	-Dsystemduserunitdir=%{systemduserunitdir}
 
 %meson_build
