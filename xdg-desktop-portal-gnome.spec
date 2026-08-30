@@ -1,16 +1,20 @@
+#
+# Conditional build:
+%bcond_without	systemd		# systemd support
+
 Summary:	GNOME Desktop Portal
 Summary(pl.UTF-8):	Implementacja XDG Desktop Portal dla GNOME
 Name:		xdg-desktop-portal-gnome
-Version:	48.0
+Version:	50.0
 Release:	1
 License:	LGPL v2+
 Group:		X11/Applications
-Source0:	https://download.gnome.org/sources/xdg-desktop-portal-gnome/48/%{name}-%{version}.tar.xz
-# Source0-md5:	807c85deafe87d31be76a8b66cea53d0
+Source0:	https://download.gnome.org/sources/xdg-desktop-portal-gnome/50/%{name}-%{version}.tar.xz
+# Source0-md5:	6ef350f31272babbb536cc745746adad
 URL:		https://gitlab.gnome.org/GNOME/xdg-desktop-portal-gnome
 BuildRequires:	fontconfig-devel
 BuildRequires:	gettext-tools
-BuildRequires:	glib2-devel >= 1:2.62
+BuildRequires:	glib2-devel >= 1:2.76
 BuildRequires:	gnome-desktop4-devel >= 4
 BuildRequires:	gsettings-desktop-schemas-devel >= 47
 BuildRequires:	gtk4-devel >= 4.17.1
@@ -19,13 +23,13 @@ BuildRequires:	meson >= 1.1
 BuildRequires:	ninja >= 1.5
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(macros) >= 2.042
-BuildRequires:	systemd-devel >= 1:242
+%{?with_systemd:BuildRequires:	systemd-devel >= 1:242}
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	wayland-devel
 BuildRequires:	xdg-desktop-portal-devel >= 1.19.1
 BuildRequires:	xorg-lib-libX11-devel
 BuildRequires:	xz
-Requires:	glib2 >= 1:2.62
+Requires:	glib2 >= 1:2.76
 Requires:	gsettings-desktop-schemas >= 47
 Requires:	gtk4 >= 4.17.1
 Requires:	libadwaita >= 1.7
@@ -48,7 +52,7 @@ GNOME Settings Daemon, aby zapewnić różne funkcje portalu.
 
 %build
 %meson \
-	-Dsystemd=enabled \
+	-Dsystemd=%{__enabled_disabled system} \
 	-Dsystemduserunitdir=%{systemduserunitdir}
 
 %meson_build
@@ -76,8 +80,10 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc NEWS README.md
 %attr(755,root,root) %{_libexecdir}/xdg-desktop-portal-gnome
-%{systemduserunitdir}/xdg-desktop-portal-gnome.service
 %{_datadir}/dbus-1/services/org.freedesktop.impl.portal.desktop.gnome.service
 %{_datadir}/glib-2.0/schemas/xdg-desktop-portal-gnome.gschema.xml
 %{_datadir}/xdg-desktop-portal/portals/gnome.portal
 %{_desktopdir}/xdg-desktop-portal-gnome.desktop
+%if %{with systemd}
+%{systemduserunitdir}/xdg-desktop-portal-gnome.service
+%endif
